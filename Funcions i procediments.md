@@ -1,8 +1,8 @@
 # Funcions i procediments
-La base de dades utilitzada es rrhh
+[La base de dades utilitzada es rrhh](https://github.com/RaviOli2621/Base-de-dades/blob/main/BasesDeDades/rrhh)
 ## Funcions
 ### Ex1
-~~~
+~~~mysql
 DELIMITER //
 CREATE FUNCTION `spData` (data Date)
 RETURNS CHAR(10)
@@ -18,7 +18,7 @@ DELIMITER ;
 SELECT spData('1979-10-10') AS data;
 ~~~
 ### Ex2
-~~~
+~~~mysql
 DELIMITER //
 CREATE FUNCTION `spPotencia` (base INT, pot INT)
 RETURNS FLOAT
@@ -37,7 +37,7 @@ DELIMITER ;
 SELECT spPotencia(2,0) AS num;
 ~~~
 ### Ex3
-~~~
+~~~mysql
 DELIMITER //
 CREATE FUNCTION `spIncrement` (vId INT, vPot INT)
 RETURNS DECIMAL(8,2)
@@ -52,7 +52,7 @@ DELIMITER ;
 SELECT spIncrement(101,10) AS Augm;
 ~~~
 ### Ex4
-~~~
+~~~mysql
 DELIMITER //
 CREATE FUNCTION `spPringat` (vDepId INT)
 RETURNS INT
@@ -64,11 +64,11 @@ DELIMITER ;
 SELECT spPringat(20) AS empleat_id;
 ~~~
 ### Ex5 (Utilitza la funcio del ex4)
-~~~
+~~~mysql
 SELECT departament_id, spPringat(departament_id) AS empleat_id FROM departaments HAVING empleat_id ORDER BY departament_id;
 ~~~
 ### Ex6
-~~~
+~~~mysql
 DELIMITER //
 CREATE FUNCTION `spCategoria` (vEmplId INT)
 RETURNS VARCHAR(20)
