@@ -139,7 +139,30 @@ SELECT empleat_id, salari FROM empleats;
 
 ### Ex3
 ~~~mysql
-Hola :)
+DELIMITER //
+CREATE PROCEDURE ex3(IN pId1 INT,IN pId2 INT)
+BEGIN
+    -- Creamos variables para los sueldos 
+	DECLARE pDep1 decimal(8,2);
+    DECLARE pDep2 decimal(8,2);
+    -- Si los empleados existen...
+    IF((SELECT spEmpleatEx(pId1) = 1) AND (SELECT spEmpleatEx(pId2) = 1)) THEN
+    -- Guardar sueldos
+    SET pDep1 = (SELECT departament_id FROM empleats WHERE empleat_id = pId1 LIMIT 1);
+    SET pDep2 = (SELECT departament_id FROM empleats WHERE empleat_id = pId2 LIMIT 1);
+    -- Canviar suledos
+    UPDATE empleats
+		SET departament_id = pDep2
+	WHERE empleat_id = pId1;
+    
+    UPDATE empleats
+		SET departament_id = pDep1
+	WHERE empleat_id = pId2;
+    END IF;
+END //
+DELIMITER ;
+
+CALL ex3(100,103);
 ~~~
 ### Ex4
 ~~~mysql
