@@ -33,7 +33,7 @@ db.empleats.find({"salari":{$gt:2000,$lt:6000}},{})
 ~~~
 ## 9. Recupera els empleats que el seu número de telèfon comença per 515
 ~~~javascript
-db.empleats.find({"telefon":/^515/i},{})
+db.empleats.find({"telefon":/^515/},{})
 ~~~
 ## 10.Recupera els empleats que no treballin de Vice President. Utilitza el codi de la feina
 "AD_VP"
