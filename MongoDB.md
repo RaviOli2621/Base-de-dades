@@ -38,7 +38,7 @@ db.empleats.find({"telefon":/^515/},{})
 ## 10.Recupera els empleats que no treballin de Vice President. Utilitza el codi de la feina
 "AD_VP"
 ~~~javascript
-db.empleats.find({"feina.codi":"AD_VP"},{})
+db.empleats.find({$not:{"feina.codi":"AD_VP"}},{})
 ~~~
 ## 11.Recupera els empleats que tenen pct_comissio.
 ~~~javascript
@@ -46,7 +46,7 @@ db.empleats.find({"pct_comissio":{"$exists":false}})
 ~~~
 ## 12.Recupera els empleats que tenen pct_comissio i hagi treballat o treballin actualment de "Cap de Vendes" . Utilitza el codi de feina "SA_MAN".
 ~~~javascript
-
+db.empleats.find({"pct_comissio":{}})
 ~~~
 ## 13.Recupera els empleats que han tingut 2 feines. No tinguis en compte la feina actual.
 ~~~javascript
