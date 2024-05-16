@@ -223,3 +223,59 @@ DELIMITER ;
 
 CALL spRegistre(101);
 ~~~
+### Ex8
+~~~mysql
+DROP PROCEDURE IF EXISTS spRegistreV2;
+DELIMITER //
+CREATE PROCEDURE spRegistreV2()
+BEGIN
+	CALL spRegistre(current_user());
+END //
+DELIMITER ;
+
+CALL spRegistreV2();
+~~~
+### Ex9
+~~~mysql
+DROP PROCEDURE IF EXISTS spDepartament;
+DELIMITER //
+CREATE PROCEDURE spDepartament(IN prId INT, IN prNom VARCHAR(30), IN prLoc INT)
+BEGIN
+	IF (SELECT COUNT(localitzacio_id) FROM localitzacions WHERE localitzacio_id = prLoc) > 0 THEN
+    INSERT INTO departaments(departament_id, nom, localitzacio_id) VALUE(prId, prNom, prLoc);
+    END IF;
+	IF (SELECT COUNT(localitzacio_id) FROM localitzacions WHERE localitzacio_id = prLoc) > 0 THEN
+    INSERT INTO departaments(departament_id, nom, localitzacio_id) VALUE(prId, prNom, NULL);
+    END IF;
+    SELECT * FROM departaments;
+END //
+DELIMITER ;
+SELECT * FROM departaments;
+CALL spDepartament(220, "Pondongo", 1000);
+~~~
+### Ex13
+~~~mysql
+DROP PROCEDURE spEliminarDep;
+
+DELIMITER //
+
+CREATE PROCEDURE spEliminarDep(pDepId INT)
+BEGIN  
+	DECLARE vDepId INT;
+
+	IF( SELECT departament_id FROM departaments	WHERE departament_id = vDepId) IS NOT NULL THEN 
+    UPDATE empleats 
+		SET id_cap = NULL
+
+	WHERE empleat_id IN (SELECT empleat_id FROM empleats WHERE departament_id = pDepId);
+    DELETE FROM empleats WHERE departament_id = pDepId;
+    DELETE FROM historial_feines WHERE departament_id = pDepId;
+    
+    UPDATE empleats
+		SET id_cap = NULL
+        WHERE empleat_id IN (SELECT id_cap FROM empleats WHERE departament_id = dDepId);
+	END IF;
+END;
+//
+CALL spEliminarDep()
+~~~
