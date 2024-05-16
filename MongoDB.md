@@ -70,3 +70,124 @@ db.students.find({"birth_year":{$eq:1993}}).count()
 ~~~js
 db.students.find({"birth_year":{$eq:1993},"gender":{$eq:"H"}}).count()
 ~~~
+## Ex5
+~~~js
+db.students.find({"birth_year":{$gt:1990}})
+~~~
+## Ex6
+~~~js
+db.students.find({"birth_year":{$lte:1990}})
+~~~
+## Ex7
+~~~js
+db.students.find({$and:[{"birth_year":{$gte:1990}},{"birth_year":{$lte:2000}}]})
+~~~
+## Ex8
+~~~js
+db.students.find({$and:[{"birth_year":{$gte:1990}},{"birth_year":{$lte:2000}},{"gender":{$eq:"M"}}]})
+~~~
+## Ex9
+~~~js
+db.students.find({"birth_year":{$not:{$eq:1985}}})
+~~~
+## Ex10
+~~~js
+db.students.find({$or:[{"birth_year":{$eq:1970}},{"birth_year":{$eq:1980}},{"birth_year":{$eq:1990}}]})
+~~~
+## Ex11
+~~~js
+db.students.find({$and:[{"birth_year":{$not:{$eq:1970}}},{"birth_year":{$not:{$eq:1980}}},{"birth_year":{$not:{$eq:1990}}}]})
+~~~
+## Ex12
+~~~js
+db.students.find({"birth_year": {$mod:[2.0,0]}})
+~~~
+## Ex13
+~~~js
+db.students.find({"phone_aux": {$exists:true}})
+~~~
+## Ex14
+~~~js
+db.students.find({"phone_aux": {$exists:false}})
+~~~
+## Ex15
+~~~js
+db.students.find({"lastname2": {$exists:false}})
+~~~
+## Ex16
+~~~js
+db.students.find({"phone_aux": {$exists:true},"lastname2": {$exists:false}})
+~~~
+## Ex17
+~~~js
+db.students.find({"email": /\.net$/i})
+~~~
+## Ex18
+~~~js
+db.students.find({"phone": /^622/})
+~~~
+## Ex19
+~~~js
+db.students.find({"dni": /^[a-z].[a-z]$/})
+~~~
+## Ex20
+~~~js
+
+~~~
+## Ex21
+~~~js
+~~~
+## Ex22
+~~~js
+~~~
+## Ex23
+~~~js
+~~~
+## Ex24
+~~~js
+~~~
+## Ex25
+~~~js
+~~~
+## Ex26
+~~~js
+~~~
+## Ex27
+~~~js
+~~~
+## Ex28
+~~~js
+~~~
+## Ex29
+~~~js
+~~~
+## Ex30
+~~~js
+~~~
+## Ex31
+~~~js
+~~~
+## Ex32
+~~~js
+~~~
+## Ex33
+~~~js
+~~~
+## Ex34
+~~~js
+~~~
+## Ex35
+~~~js
+~~~
+## Ex36
+~~~js
+~~~
+## Ex37
+~~~js
+~~~
+## Ex38
+~~~js
+~~~
+## Ex39
+~~~js
+~~~
