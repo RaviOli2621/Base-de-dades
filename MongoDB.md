@@ -128,44 +128,59 @@ db.students.find({"phone": /^622/})
 ~~~
 ## Ex19
 ~~~js
-db.students.find({"dni": /^[a-z].[a-z]$/})
+db.students.find({"dni": /^[A-Z].+[A-Z]$/})
 ~~~
 ## Ex20
 ~~~js
-
+db.students.find({"name": /^(a|e|i|o|u)/i})
 ~~~
 ## Ex21
 ~~~js
+db.students.find({"name": /.+ .+/i})
 ~~~
 ## Ex22
 ~~~js
+db.students.find({"name": /.............+/i})
+~~~
+o
+~~~js
+db.students.find({ "name": { $regex: /.{13,}/ } })
 ~~~
 ## Ex23
 ~~~js
+db.students.find({name:/.*[aeiouàáèéíòóú].*{3}/i})
 ~~~
 ## Ex24
 ~~~js
+db.bios.find({"contribs": {$in:["OOP"]}})
 ~~~
 ## Ex25
 ~~~js
+db.bios.find({"contribs": {$in:["OOP","Java"]}})
 ~~~
 ## Ex26
 ~~~js
+db.bios.find({"contribs": {$in:["OOP"]},"contribs": {$in:["Simula"]}})
 ~~~
 ## Ex27
 ~~~js
+db.bios.find({"deathYear": {"$exists":false})
 ~~~
 ## Ex28
 ~~~js
+db.bios.find({"deathYear": {"$exists":true})
 ~~~
 ## Ex29
 ~~~js
+db.bios.find({"award.year": {$eq:[2002]}})
 ~~~
 ## Ex30
 ~~~js
+db.bios.find({"awards": {$size:3}})
 ~~~
 ## Ex31
 ~~~js
+db.students.find({name:/.*([aeiouàáèéíòóú].*){3}.*/i})
 ~~~
 ## Ex32
 ~~~js
