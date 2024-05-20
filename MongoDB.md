@@ -184,6 +184,7 @@ db.students.find({name:/.*([aeiouàáèéíòóú].*){3}.*/i})
 ~~~
 ## Ex32
 ~~~js
+
 ~~~
 ## Ex33
 ~~~js
@@ -196,9 +197,11 @@ db.students.find({name:/.*([aeiouàáèéíòóú].*){3}.*/i})
 ~~~
 ## Ex36
 ~~~js
+db.books.find({$or:[{"author":{$in:["Martin Fowloer"]}},{"author":{$in:["Kent Beck"]}}]},{"author":true})
 ~~~
 ## Ex37
 ~~~js
+db.books.find({$and:[{"programming": {"$exists":false},{"agile": {"$exists":false}]})
 ~~~
 ## Ex38
 ~~~js
