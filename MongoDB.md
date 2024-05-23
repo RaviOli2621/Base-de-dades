@@ -209,3 +209,56 @@ db.books.find({$and:[{"programming": {"$exists":false},{"agile": {"$exists":fals
 ## Ex39
 ~~~js
 ~~~
+# Agregation 
+## Ex1-6
+~~~js
+db.getCollection('empleats').aggregate(
+  [
+    {
+      $group: {
+        _id: '$departament.codi',
+        quantitatEmpleats: { $sum: 1 },
+        salariMesAlt: { $max: '$salari' },
+        sumaSalari: { $sum: '$salari' }
+      }
+    },
+    { $match: { _id: { $not: { $eq: null } } } },
+    { $sort: { quantitatEmpleats: -1 } },
+    { $match: { sumaSalari: { $gt: 19000 } } }
+  ],
+  { maxTimeMS: 60000, allowDiskUse: true }
+);
+~~~
+
+## Ex7
+~~~js
+
+~~~
+
+## Ex8
+~~~js
+
+~~~
+
+## Ex9
+~~~js
+db.getCollection('empleats').aggregate(
+  [
+    {
+      $match: {
+        historial_feines: { $exists: true }
+      }
+    }
+  ],
+  { maxTimeMS: 60000, allowDiskUse: true }
+);
+~~~
+## Ex10
+~~~js
+
+~~~
+
+## Ex11
+~~~js
+
+~~~
