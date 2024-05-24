@@ -231,6 +231,7 @@ db.getCollection('empleats').aggregate(
 ~~~
 
 ## Ex7
+Con un condicional (cond)
 ~~~js
 
 ~~~
