@@ -230,15 +230,38 @@ db.getCollection('empleats').aggregate(
 );
 ~~~
 
-## Ex7
+## Ex7 i 8
 Con un condicional (cond)
 ~~~js
-
-~~~
-
-## Ex8
-~~~js
-
+db.getCollection('empleats').aggregate(
+  [
+    {
+      $addFields: {
+        historial_feines: {
+          $cond: {
+            if: { $isArray: '$historial_feines' },
+            then: { $size: '$historial_feines' },
+            else: '$$REMOVE'
+          }
+        }
+      }
+    },
+    {
+      $addFields: {
+        historial_feines: {
+          $cond: {
+            if: { $isArray: '$historial_feines' },
+            then: {
+              $add: ['$historial_feines', 1]
+            },
+            else: 1
+          }
+        }
+      }
+    }
+  ],
+  { maxTimeMS: 60000, allowDiskUse: true }
+);  
 ~~~
 
 ## Ex9
@@ -254,12 +277,99 @@ db.getCollection('empleats').aggregate(
   { maxTimeMS: 60000, allowDiskUse: true }
 );
 ~~~
-## Ex10
+## Ex10 i 11
 ~~~js
-
+db.getCollection('empleats').aggregate(
+  [
+    {
+      $lookup: {
+        from: 'departaments',
+        localField: 'departament.codi',
+        foreignField: 'codi',
+        as: 'departament'
+      }
+    },
+    {
+      $addFields: {
+        departament: {
+          $arrayElemAt: ['$departament', 0]
+        }
+      }
+    }
+  ],
+  { maxTimeMS: 60000, allowDiskUse: true }
+);
 ~~~
 
-## Ex11
+# Mas
+## Ex1
 ~~~js
+[
+  {
+    $match:
+      /**
+       * query: The query in MQL.
+       */
+      {
+        $or: [
+          {
+            "equip_local.entrenadors.nom":
+              "Pedro Martínez"
+          },
+          {
+            "equip_visitant.entrenadors.nom":
+              "Pedro Martínez"
+          }
+        ]
+      }
+  },
+  {
+    $count:
+      /**
+       * Provide the field name for the count.
+       */
+      "Pedro Martínez"
+  }
+]
+~~~
+
+## Ex2
+~~~js
+$or:[{"equip_local.entrenador.nom":"Pedro Martinez"},{"equip_visitant.entrenador.nom":"Pedro Martinez"}]
+~~~
+## Ex4
+~~~js
+$addFields:
+{
+  alcada:{$toDecimal:"alcada"}
+}
+~~~
+## Ex5 
+~~~js
+$match:{
+  xarxes_socials:
+  {
+    $exists:1  
+  },
+  "xarxes_socials.nom":"instagram"
+},
+{"$unwind":"xarxes_socials"},
+$project:
+{
+  "xarxes_socials.nom":1,
+  "xarxes_socials.usuari":1
+}
+
+~~~
+## Ex6 
+~~~js
+$match:{
+"codi_acb":"103778"
+},
+{"$unwind":"equip_local.jugadors"},
+$group:
+{
+  "_id":"local","total_punts":{"$sum"...}
+}
 
 ~~~
