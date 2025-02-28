@@ -6,21 +6,29 @@ En este caso, la idea de envolver la hamburguesa en un pan durum o [tortilla de 
 en un intento de preparar un plato diferente que fusionara dos cenas que nos gusta tomar en casa a todos, 
 como son las hamburguesas caseras y los kebabs aunque sólo tomamos de manera ocasional.
 
-
-| 2 comensales | 30m                                                    | Plato principal | Dificultad baja |
-|--------------|--------------------------------------------------------|-----------------|-----------------|
-
-|**Características adicionales:** Coste barato, Plancha|  |                 |                 
-|--------------|--------------------------------------------------------|-----------------|
-
- **Ingredientes:**  
- -  2 Hamburguesas de vacuno
- -  4 lonchas de Queso
- -  1 puñado de Pepinillos en rodajas
- -  1 chorro de Salsa kebab
- -  1 chorro de Aceite de oliva
- -  Pan de kebab (durum, tortilla de maíz o pita) 
- 
+<table>
+ <tr>
+  <td>2 comensales</td>
+  <td>30m</td>
+  <td> Plato principal </td>
+  <td>Dificultad baja</td>
+ </tr>
+ <tr>
+  <td colspan="4"><strong>Características adicionales:</strong> Coste barato, Plancha</td>
+ </tr>
+  <tr>
+   <td colspan="4"><strong>Ingredientes:</strong>
+    <ul>
+      <li>2 Hamburguesas de vacuno</li>
+      <li>4 lonchas de Queso</li>
+      <li>1 puñado de Pepinillos en rodajas</li>
+      <li>1 chorro de Salsa kebab</li>
+      <li>1 chorro de Aceite de oliva</li>
+      <li>Pan de kebab (durum, tortilla de maíz o pita)</li>
+    </ul>
+   </td>
+ </tr>
+</table>
 
 También te puede interesar: [Receta de Kebab de salchicha](https://www.recetasgratis.net/receta-de-kebab-de-salchicha-61544.html)
 
